@@ -27,6 +27,9 @@ class MainActivity : AppCompatActivity() {
                 binding.wifi.text = "Wifi disconnected"
             }
         }
+        val networkChangeReceiverLocation = MyBroadcastReceiverLocation()
+        val intentFilterLocation = IntentFilter("android.location.PROVIDERS_CHANGED")
+        registerReceiver(networkChangeReceiverLocation, intentFilterLocation)
         MyData.isThereALocation.observe(this) {
             if (it) {
                 binding.location.text = "Location enabled"
